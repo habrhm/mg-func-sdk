@@ -12,6 +12,10 @@ func main() {
 	e := echo.New()
 	client := microgen.NewClient("033506d6-9742-4298-855a-fb19974b6c75", microgen.DefaultURL())
 
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, {message: "hello world"})
+	})
+	
 	songsRoutes := e.Group("/songs")
 
 	songsRoutes.GET("", func(c echo.Context) error {
